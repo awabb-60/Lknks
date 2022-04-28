@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/linkShortenerFragment">
+
+    <fragment
+        android:id="@+id/linkShortenerFragment"
+        android:name="com.awab.links.LinkShortenerFragment"
+        android:label="Link Shortener" >
+        <action
+            android:id="@+id/action_linkShortenerFragment_to_QRCodeFragment"
+            app:destination="@id/QRCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/QRCodeFragment"
+        android:name="com.awab.links.QRCodeFragment"
+        android:label="QRCode" >
+        <action
+            android:id="@+id/action_QRCodeFragment_to_linkShortenerFragment"
+            app:destination="@id/linkShortenerFragment" />
+    </fragment>
+</navigation>
