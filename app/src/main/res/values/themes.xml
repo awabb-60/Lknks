@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="Theme.Links" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#A491C0</item>
+        <item name="colorPrimary">@color/app_main_color</item>
         <item name="colorPrimaryVariant">@color/light_black</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#A491C0</item>
-        <item name="colorSecondaryVariant">#A491C0</item>
+        <item name="colorSecondary">@color/app_main_color</item>
+        <item name="colorSecondaryVariant">@color/app_main_color</item>
         <item name="colorOnSecondary">@color/light_black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>

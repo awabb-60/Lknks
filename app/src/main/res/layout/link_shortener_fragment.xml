@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/link"
+        android:id="@+id/etLink"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="link shortener"
+        android:text="https://www.youtube.com"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,15 +26,71 @@
         android:text="Shorten"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/link" />
+        app:layout_constraintTop_toBottomOf="@+id/etLink" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
-        android:visibility="gone"
         android:layout_width="wrap_content"
-        android:layout_margin="10dp"
         android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/shorten"
         app:layout_constraintStart_toEndOf="@+id/shorten"
-        app:layout_constraintTop_toTopOf="@+id/shorten"/>
+        app:layout_constraintTop_toTopOf="@+id/shorten" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/short_link_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:elevation="20dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shorten">
+
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/link_icon"
+            android:src="@drawable/ic_link"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/short_link"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/copy_shor_link"
+                android:layout_toEndOf="@id/link_icon"
+                android:maxLines="1"
+                android:padding="10dp"
+                tools:text="test" />
+
+        <ImageButton
+            android:layout_alignParentEnd="true"
+            android:id="@+id/copy_shor_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:background="?attr/selectableItemBackground"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_copy" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
