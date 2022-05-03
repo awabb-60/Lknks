@@ -74,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toStartOf="@id/copy_shor_link"
+                android:layout_toStartOf="@id/share_short_link"
                 android:layout_toEndOf="@id/link_icon"
                 android:maxLines="1"
                 android:padding="10dp"
@@ -82,13 +82,24 @@
 
         <ImageButton
             android:layout_alignParentEnd="true"
-            android:id="@+id/copy_shor_link"
+            android:id="@+id/copy_short_link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|end"
             android:background="?attr/selectableItemBackground"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_copy" />
+
+        <ImageButton
+            android:id="@+id/share_short_link"
+            android:layout_width="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/copy_short_link"
+            android:layout_gravity="center_vertical"
+            android:background="?attr/selectableItemBackground"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_share" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

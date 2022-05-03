@@ -3,6 +3,7 @@ package com.awab.links
 import android.app.Activity
 import android.content.ClipData
 import android.content.ClipboardManager
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -50,12 +51,23 @@ class LinkShortenerFragment: Fragment(R.layout.link_shortener_fragment){
             binding.progressBar.visibility = View.VISIBLE
             mainViewModel.makeShortLink(linkText)
         }
-        binding.copyShorLink.setOnClickListener {
+
+        binding.copyShortLink.setOnClickListener {
             val clipBoardManager = requireActivity().getSystemService(Activity.CLIPBOARD_SERVICE) as  ClipboardManager
             val clip = ClipData.newPlainText("short link", binding.shortLink.text)
             clipBoardManager.setPrimaryClip(clip)
 
             Toast.makeText(requireContext(), "coped", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.shareShortLink.setOnClickListener{
+            val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, binding.shortLink.text)
+            }
+
+            val chooser = Intent.createChooser(shareIntent,"share link")
+            startActivity(chooser)
         }
     }
 

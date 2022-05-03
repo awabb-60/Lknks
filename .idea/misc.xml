@@ -4,8 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/HP/AndroidStudioProjects/Links/app/src/main/res/layout/activity_main.xml" value="0.2054421768707483" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Links/app/src/main/res/layout/link_shortener_fragment.xml" value="0.2" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Links/app/src/main/res/layout/link_shortener_fragment.xml" value="0.33" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Links/app/src/main/res/layout/qrcode_fragment.xml" value="0.209375" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Links/app/src/main/res/layout/short_link_layout.xml" value="0.209375" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Links/app/src/main/res/menu/drawer_menu.xml" value="0.33" />
       </map>
     </option>
