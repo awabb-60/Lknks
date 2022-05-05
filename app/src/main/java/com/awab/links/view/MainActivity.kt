@@ -1,4 +1,4 @@
-package com.awab.links
+package com.awab.links.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.awab.links.R
 import com.awab.links.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

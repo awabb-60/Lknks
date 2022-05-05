@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/linkShortenerFragment"
-        android:name="com.awab.links.LinkShortenerFragment"
+        android:name="com.awab.links.view.LinkShortenerFragment"
         android:label="Link Shortener" >
         <action
             android:id="@+id/action_linkShortenerFragment_to_QRCodeFragment"
@@ -14,10 +14,17 @@
     </fragment>
     <fragment
         android:id="@+id/QRCodeFragment"
-        android:name="com.awab.links.QRCodeFragment"
+        android:name="com.awab.links.view.QRCodeFragment"
         android:label="QRCode" >
         <action
             android:id="@+id/action_QRCodeFragment_to_linkShortenerFragment"
             app:destination="@id/linkShortenerFragment" />
+        <action
+            android:id="@+id/action_QRCodeFragment_to_scanQRCodeFragment"
+            app:destination="@id/scanQRCodeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/scanQRCodeFragment"
+        android:name="com.awab.links.view.ScanQRCodeFragment"
+        android:label="ScanQRCodeFragment" />
 </navigation>

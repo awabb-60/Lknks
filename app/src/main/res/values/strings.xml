@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Links</string>
+    <string name="shorten_button">Shorten</string>
 </resources>

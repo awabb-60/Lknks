@@ -1,9 +1,7 @@
 package com.awab.links.model
 
-import android.util.Log
 import com.awab.links.BuildConfig
 import com.google.gson.GsonBuilder
-import com.google.gson.stream.JsonReader
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -35,6 +33,7 @@ class Repository {
         .create(Is_gdLinkShortenerApi::class.java)
 
     suspend fun shortenLink(link: String): String {
+
         try {
             val response = api.getShortLink(link=link)
             if (response.isSuccessful && response.body()?.shortLink != null){
@@ -42,6 +41,7 @@ class Repository {
             }
             throw Exception("failed to get short url")
         } catch (e: Exception) {
+            e.printStackTrace()
             return "error"
         }
     }
