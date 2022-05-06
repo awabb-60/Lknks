@@ -15,6 +15,8 @@ import androidx.lifecycle.ViewModelStoreOwner
 import com.awab.links.MainViewModel
 import com.awab.links.R
 import com.awab.links.databinding.LinkShortenerFragmentBinding
+import com.awab.links.utils.getShareTextIntent
+import com.awab.links.utils.saveToClipBoard
 
 class LinkShortenerFragment : Fragment(R.layout.link_shortener_fragment) {
 
@@ -54,22 +56,10 @@ class LinkShortenerFragment : Fragment(R.layout.link_shortener_fragment) {
         }
 
         binding.copyShortLink.setOnClickListener {
-            val clipBoardManager =
-                requireActivity().getSystemService(Activity.CLIPBOARD_SERVICE) as ClipboardManager
-            val clip = ClipData.newPlainText("short link", binding.shortLink.text)
-            clipBoardManager.setPrimaryClip(clip)
-
-            Toast.makeText(requireContext(), "coped", Toast.LENGTH_SHORT).show()
+            saveToClipBoard(requireActivity(), binding.shortLink.text.toString())
         }
-
         binding.shareShortLink.setOnClickListener {
-            val shareIntent = Intent(Intent.ACTION_SEND).apply {
-                type = "text/plain"
-                putExtra(Intent.EXTRA_TEXT, binding.shortLink.text)
-            }
-
-            val chooser = Intent.createChooser(shareIntent, "share link")
-            startActivity(chooser)
+            startActivity(getShareTextIntent(binding.shortLink.text.toString()))
         }
     }
 

@@ -39,7 +39,6 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
@@ -85,7 +84,8 @@ dependencies {
     implementation 'com.google.dagger:hilt-android:2.41'
     kapt 'com.google.dagger:hilt-compiler:2.41'
 
-    //code scanner
+    // code scanner
     implementation 'com.github.yuriy-budiyev:code-scanner:2.1.2'
 
+    implementation 'com.google.zxing:core:3.3.2'
 }

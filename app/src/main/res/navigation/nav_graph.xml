@@ -22,9 +22,16 @@
         <action
             android:id="@+id/action_QRCodeFragment_to_scanQRCodeFragment"
             app:destination="@id/scanQRCodeFragment" />
+        <action
+            android:id="@+id/action_QRCodeFragment_to_createQRCodeFragment"
+            app:destination="@id/createQRCodeFragment" />
     </fragment>
     <fragment
         android:id="@+id/scanQRCodeFragment"
         android:name="com.awab.links.view.ScanQRCodeFragment"
         android:label="ScanQRCodeFragment" />
+    <fragment
+        android:id="@+id/createQRCodeFragment"
+        android:name="com.awab.links.view.CreateQRCodeFragment"
+        android:label="CreateQRCodeFragment" />
 </navigation>

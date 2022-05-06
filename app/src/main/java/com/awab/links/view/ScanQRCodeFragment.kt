@@ -1,5 +1,8 @@
 package com.awab.links.view
 
+import android.app.Activity
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +14,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.awab.links.databinding.ScanQrcodeFragmentBinding
+import com.awab.links.utils.getShareTextIntent
+import com.awab.links.utils.saveToClipBoard
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.ScanMode
@@ -64,6 +69,13 @@ class ScanQRCodeFragment : Fragment() {
             checkPermission()
         }
 
+        binding.ibCopyText.setOnClickListener {
+            saveToClipBoard(requireActivity(), binding.tvResultText.text.toString())
+        }
+        binding.ibShareText.setOnClickListener {
+            startActivity(getShareTextIntent(binding.tvResultText.text.toString()))
+        }
+
         codeScanner.startPreview()
     }
 
@@ -80,9 +92,8 @@ class ScanQRCodeFragment : Fragment() {
             Log.d("QRCode Scanner", "no result from scan")
             return
         }
-
-        binding.scanResultsCard.visibility = View.VISIBLE
-        binding.resultText.text = text
+        binding.cvScanResultsCard.visibility = View.VISIBLE
+        binding.tvResultText.text = text
     }
 
     override fun onDestroyView() {

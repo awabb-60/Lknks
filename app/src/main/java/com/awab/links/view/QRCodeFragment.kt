@@ -31,6 +31,9 @@ class QRCodeFragment: Fragment(){
         binding.scan.setOnClickListener {
         Navigation.findNavController(it).navigate(R.id.action_QRCodeFragment_to_scanQRCodeFragment)
         }
+        binding.create.setOnClickListener {
+        Navigation.findNavController(it).navigate(R.id.action_QRCodeFragment_to_createQRCodeFragment)
+        }
     }
 
 
