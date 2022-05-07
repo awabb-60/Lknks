@@ -1,8 +1,5 @@
 package com.awab.links.view
 
-import android.app.Activity
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +10,8 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.preference.PreferenceManager
+import com.awab.links.R
 import com.awab.links.databinding.ScanQrcodeFragmentBinding
 import com.awab.links.utils.getShareTextIntent
 import com.awab.links.utils.saveToClipBoard
@@ -50,12 +49,12 @@ class ScanQRCodeFragment : Fragment() {
             camera = CodeScanner.CAMERA_BACK
             formats = CodeScanner.ALL_FORMATS
 
-            autoFocusMode = AutoFocusMode.SAFE
             scanMode = ScanMode.CONTINUOUS
 
             isAutoFocusEnabled = true
             isFlashEnabled = false
 
+            this.zoom = 100
             setDecodeCallback {
                 CoroutineScope(Dispatchers.Main).launch { showScanResult(it.text) }
             }
@@ -65,8 +64,10 @@ class ScanQRCodeFragment : Fragment() {
                     Toast.makeText(requireContext(), "error: failed to scan!", Toast.LENGTH_SHORT).show() }
             }
         }
+
         binding.scanner.setOnClickListener {
             checkPermission()
+            codeScanner.startPreview()
         }
 
         binding.ibCopyText.setOnClickListener {
@@ -75,7 +76,6 @@ class ScanQRCodeFragment : Fragment() {
         binding.ibShareText.setOnClickListener {
             startActivity(getShareTextIntent(binding.tvResultText.text.toString()))
         }
-
         codeScanner.startPreview()
     }
 
@@ -87,6 +87,22 @@ class ScanQRCodeFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        _binding = null
+        codeScanner.releaseResources()
+        super.onDestroyView()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString(RESULT_KEY, binding.tvResultText.text.toString())
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        showScanResult(savedInstanceState?.getString(RESULT_KEY))
+    }
+
     private fun showScanResult(text: String?) {
         text ?: run {
             Log.d("QRCode Scanner", "no result from scan")
@@ -96,9 +112,7 @@ class ScanQRCodeFragment : Fragment() {
         binding.tvResultText.text = text
     }
 
-    override fun onDestroyView() {
-        _binding = null
-        codeScanner.releaseResources()
-        super.onDestroyView()
+    companion object{
+        const val RESULT_KEY = "RESULT_KEY"
     }
 }

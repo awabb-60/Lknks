@@ -17,7 +17,7 @@
     <item android:title="other">
         <menu>
             <item
-                android:id="@+id/miSettings"
+                android:id="@+id/settingsFragment"
                 android:title="settings" />
         </menu>
     </item>

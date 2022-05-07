@@ -1,14 +1,9 @@
 package com.awab.links.view
 
-import android.app.Activity
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
@@ -20,7 +15,7 @@ import com.awab.links.utils.saveToClipBoard
 
 class LinkShortenerFragment : Fragment(R.layout.link_shortener_fragment) {
 
-    private lateinit var mainViewModel: MainViewModel
+    private lateinit var viewModel: MainViewModel
 
     private var _binding: LinkShortenerFragmentBinding? = null
     private val binding: LinkShortenerFragmentBinding
@@ -37,30 +32,31 @@ class LinkShortenerFragment : Fragment(R.layout.link_shortener_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(requireContext() as ViewModelStoreOwner)[MainViewModel::class.java]
 
-        mainViewModel = ViewModelProvider(activity as ViewModelStoreOwner)[MainViewModel::class.java]
-
-        mainViewModel.message.observe(viewLifecycleOwner) {
+        viewModel.shortLink.observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
-                binding.shortLinkCard.visibility = View.VISIBLE
-                binding.shortLink.text = it
+                binding.cvShortLinkCard.visibility = View.VISIBLE
+                binding.tvShortLink.text = it
                 binding.progressBar.visibility = View.INVISIBLE
             }
         }
 
         val linkText = binding.etLink.text.toString()
 
-        binding.shorten.setOnClickListener {
+        binding.btnShorten.setOnClickListener {
             binding.progressBar.visibility = View.VISIBLE
-            mainViewModel.makeShortLink(linkText)
+            viewModel.makeShortLink(linkText)
         }
 
-        binding.copyShortLink.setOnClickListener {
-            saveToClipBoard(requireActivity(), binding.shortLink.text.toString())
+        binding.ivCopy.setOnClickListener {
+            saveToClipBoard(requireActivity(), binding.tvShortLink.text.toString())
         }
-        binding.shareShortLink.setOnClickListener {
-            startActivity(getShareTextIntent(binding.shortLink.text.toString()))
+        binding.ivShare.setOnClickListener {
+            startActivity(getShareTextIntent(binding.tvShortLink.text.toString()))
         }
+
+        viewModel.createAppDir(requireContext(), requireActivity())
     }
 
     override fun onDestroyView() {

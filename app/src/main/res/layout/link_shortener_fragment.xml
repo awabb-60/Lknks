@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
 
     <EditText
-        android:id="@+id/etLink"
+        android:id="@+id/et_link"
         android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,14 +24,14 @@
         app:layout_constraintVertical_bias="0.2" />
 
     <Button
-        android:id="@+id/shorten"
+        android:id="@+id/btn_shorten"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/shorten_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etLink" />
+        app:layout_constraintTop_toBottomOf="@+id/et_link" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -39,13 +39,13 @@
         android:layout_height="0dp"
         android:layout_margin="10dp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/shorten"
-        app:layout_constraintStart_toEndOf="@+id/shorten"
-        app:layout_constraintTop_toTopOf="@+id/shorten"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_shorten"
+        app:layout_constraintStart_toEndOf="@+id/btn_shorten"
+        app:layout_constraintTop_toTopOf="@+id/btn_shorten"
         tools:visibility="visible"/>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/short_link_card"
+        android:id="@+id/cv_short_link_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -58,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shorten"
+        app:layout_constraintTop_toBottomOf="@+id/btn_shorten"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:visibility="visible">
 
@@ -68,7 +68,7 @@
             android:padding="10dp">
 
             <ImageView
-                android:id="@+id/link_icon"
+                android:id="@+id/iv_link_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -77,19 +77,19 @@
                  />
 
             <TextView
-                android:id="@+id/short_link"
+                android:id="@+id/tv_short_link"
                 style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toStartOf="@id/share_short_link"
-                android:layout_toEndOf="@id/link_icon"
+                android:layout_toStartOf="@id/iv_share"
+                android:layout_toEndOf="@id/iv_link_icon"
                 android:maxLines="1"
                 android:padding="10dp"
                 tools:text="test" />
 
             <ImageButton
-                android:id="@+id/copy_short_link"
+                android:id="@+id/iv_copy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -99,13 +99,13 @@
                 android:src="@drawable/ic_copy" />
 
             <ImageButton
-                android:id="@+id/share_short_link"
+                android:id="@+id/iv_share"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="10dp"
-                android:layout_toStartOf="@id/copy_short_link"
+                android:layout_toStartOf="@id/iv_copy"
                 android:background="?attr/selectableItemBackground"
                 android:src="@drawable/ic_share" />
 

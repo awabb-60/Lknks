@@ -34,4 +34,8 @@
         android:id="@+id/createQRCodeFragment"
         android:name="com.awab.links.view.CreateQRCodeFragment"
         android:label="CreateQRCodeFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.awab.links.view.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>
