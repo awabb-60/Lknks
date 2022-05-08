@@ -54,7 +54,6 @@ class ScanQRCodeFragment : Fragment() {
             isAutoFocusEnabled = true
             isFlashEnabled = false
 
-            this.zoom = 100
             setDecodeCallback {
                 CoroutineScope(Dispatchers.Main).launch { showScanResult(it.text) }
             }

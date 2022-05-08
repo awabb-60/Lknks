@@ -9,5 +9,7 @@
     <color name="light_black">#151515</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="transparent">#00FFFFFF</color>
+
     <color name="app_main_color">#A491C0</color>
 </resources>

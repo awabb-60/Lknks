@@ -9,108 +9,122 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/et_link"
-        android:inputType="text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:gravity="center"
-        android:text="https://www.youtube.com"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
-
-    <Button
-        android:id="@+id/btn_shorten"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/shorten_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_link" />
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_margin="10dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_shorten"
-        app:layout_constraintStart_toEndOf="@+id/btn_shorten"
-        app:layout_constraintTop_toTopOf="@+id/btn_shorten"
-        tools:visibility="visible"/>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_short_link_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="50dp"
-        android:elevation="20dp"
-        android:visibility="gone"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_shorten"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:visibility="visible">
-
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_link_card"
+            android:elevation="20dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintWidth_max="700dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_shorten"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2"
+            android:layout_width="0dp"
+            android:layout_margin="8dp"
+            android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/et_link"
+            android:padding="15dp"
+            android:hint="@string/link_input_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:gravity="center"
+            android:background="@null"
+            android:inputType="text"
+            android:text="https://www.youtube.com" />
+        </androidx.cardview.widget.CardView>
 
-            <ImageView
-                android:id="@+id/iv_link_icon"
-                android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btn_shorten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/shorten_button"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_link_card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cv_link_card"
+            app:layout_constraintTop_toTopOf="@+id/cv_link_card" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@+id/btn_shorten"
+            app:layout_constraintEnd_toEndOf="@id/btn_shorten"
+            app:layout_constraintTop_toBottomOf="@id/btn_shorten"
+            tools:visibility="visible" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_short_link_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="50dp"
+            android:elevation="20dp"
+            android:visibility="invisible"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progress_bar"
+            tools:visibility="visible">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_link"
-                 />
+                android:padding="10dp">
 
-            <TextView
-                android:id="@+id/tv_short_link"
-                style="@style/TextAppearance.AppCompat.Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toStartOf="@id/iv_share"
-                android:layout_toEndOf="@id/iv_link_icon"
-                android:maxLines="1"
-                android:padding="10dp"
-                tools:text="test" />
+                <ImageView
+                    android:id="@+id/iv_link_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_link" />
 
-            <ImageButton
-                android:id="@+id/iv_copy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center_vertical|end"
-                android:background="?attr/selectableItemBackground"
-                android:src="@drawable/ic_copy" />
+                <TextView
+                    android:id="@+id/tv_short_link"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/iv_share"
+                    android:layout_toEndOf="@id/iv_link_icon"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    tools:text="test" />
 
-            <ImageButton
-                android:id="@+id/iv_share"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="10dp"
-                android:layout_toStartOf="@id/iv_copy"
-                android:background="?attr/selectableItemBackground"
-                android:src="@drawable/ic_share" />
+                <ImageButton
+                    android:id="@+id/iv_copy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical|end"
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/ic_copy" />
 
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+                <ImageButton
+                    android:id="@+id/iv_share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@id/iv_copy"
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/ic_share" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -5,30 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/et_text"
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_text_card"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:gravity="center"
-        android:hint="text here.."
-        app:layout_constraintBottom_toTopOf="@+id/btn_create"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="8dp"
+        android:elevation="20dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_create"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintWidth_max="700dp">
+
+        <EditText
+            android:id="@+id/et_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="@string/text_input_hint"
+            android:inputType="text"
+            android:padding="15dp"
+             />
+    </androidx.cardview.widget.CardView>
+
 
     <Button
         android:id="@+id/btn_create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="create"
-        app:layout_constraintBottom_toTopOf="@+id/iv_qr_code"
+        app:layout_constraintBottom_toBottomOf="@+id/cv_text_card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_text" />
+        app:layout_constraintStart_toEndOf="@id/cv_text_card"
+        app:layout_constraintTop_toTopOf="@+id/cv_text_card" />
 
     <ImageView
         android:id="@+id/iv_qr_code"
@@ -45,9 +61,9 @@
         android:id="@+id/iv_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:layout_marginStart="10dp"
         android:background="?attr/selectableItemBackground"
+        android:padding="10dp"
         android:src="@drawable/ic_save"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/iv_qr_code"
@@ -57,12 +73,12 @@
         tools:visibility="visible" />
 
     <ImageView
-        android:padding="10dp"
         android:id="@+id/iv_share"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="?attr/selectableItemBackground"
+        android:padding="10dp"
         android:src="@drawable/ic_share"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@id/iv_save"

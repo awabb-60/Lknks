@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Environment
-import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,7 +12,6 @@ import androidx.lifecycle.viewModelScope
 import com.awab.links.model.Repository
 import com.awab.links.utils.QRCodeGen
 import com.awab.links.utils.checkStoragePermission
-import com.awab.links.utils.isAPI29AndUp
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -27,6 +25,8 @@ class MainViewModel : ViewModel() {
     val shortLink = MutableLiveData("")
 
     val qrCodeBitmap = MutableLiveData<Bitmap?>()
+
+    val toastMessage = MutableLiveData<String?>(null)
 
     private val repository = Repository()
 
@@ -43,14 +43,20 @@ class MainViewModel : ViewModel() {
 
             if (bitmap != null) {
                 qrCodeBitmap.value = bitmap
+                return
             }
+            toastMessage.value = "failed to create QR code!"
+            toastMessage.value = null
         }
+        toastMessage.value = "type in some text..."
+        toastMessage.value = null
     }
 
     fun getShareTextIntent(context: Context): Intent? {
         val imageFile = File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).absolutePath
-                    + File.separatorChar + "share_image.png")
+                    + File.separatorChar + "share_image.png"
+        )
 
         val outputStream = FileOutputStream(imageFile)
 
