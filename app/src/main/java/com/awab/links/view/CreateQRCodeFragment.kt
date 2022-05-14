@@ -37,6 +37,7 @@ class CreateQRCodeFragment : Fragment() {
         viewModel.qrCodeBitmap.observe(viewLifecycleOwner) {
             binding.ivQrCode.setImageBitmap(it)
 
+            binding.ivSave.visibility = View.VISIBLE
             // hiding the keyboard after success
             val inputMethod =
                 requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -52,7 +53,7 @@ class CreateQRCodeFragment : Fragment() {
         }
 
         binding.ivSave.setOnClickListener {
-            viewModel.saveCurrentQRCode(requireContext(), requireActivity())
+            viewModel.saveCurrentQRCode(requireContext(), requireActivity(), binding.etText.text.toString())
         }
 
         binding.ivShare.setOnClickListener {
